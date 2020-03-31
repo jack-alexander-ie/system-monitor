@@ -92,13 +92,13 @@ float LinuxParser::MemoryUtilization() {
         std::istringstream ( sMemTotal ) >> memTotal;
         std::istringstream ( sMemFree ) >> memFree;
 
-//        memUsed = memTotal - memFree;
+        memUsed = memTotal - memFree;
 
-        memoryUtilised = ((memTotal - memFree)/1024.0)/100;
+        memoryUtilised = (memUsed/memTotal)*100;
     }
 
-//    std::cout << "MemTotal: " << memTotal << "\n";
-//    std::cout << "MemFree: " << memFree << "\n";
+    std::cout << "MemTotal: " << memTotal << "\n";
+    std::cout << "MemUsed: " << memUsed << "\n";
     std::cout << "MemUtilised: " << memoryUtilised << "\n";
 
     return memoryUtilised;
